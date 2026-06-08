@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Apple Pie runtime artifacts
+downloads.28.sqlitedb
+downloads.sqlitedb
+temp_plist_copy.plist
+*.logarchive
+data/staging/
+*.log
+
+# OS / editor junk
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
+# CTF
+SOLUTION.md

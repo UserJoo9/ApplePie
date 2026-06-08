@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Pie</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+
+  <!-- ================= INTRO ================= -->
+  <div id="intro-screen" class="screen active">
+    <img class="intro-phone" src="/img/intro_phone.png" alt="">
+    <div class="intro-wrap">
+      <img class="logo" src="/img/banner.png" alt="Apple Pie">
+      <p class="intro-sub">Activation lock bypass</p>
+
+      <div class="status-card card">
+        <span class="dot wait" id="status-dot"></span>
+        <span class="status-text" id="status-text">Starting&hellip;</span>
+      </div>
+
+      <button class="intro-check-btn" id="intro-req-btn">Check requirements</button>
+    </div>
+  </div>
+
+  <!-- ================= HOME ================= -->
+  <div id="home-screen" class="screen">
+    <div class="container">
+      <header class="topbar">
+        <div class="titles">
+          <h1 class="device-name" id="device-name">iPhone</h1>
+          <p class="device-info" id="device-info">Waiting for device&hellip;</p>
+        </div>
+        <img class="logo-sm" src="/img/banner.png" alt="Apple Pie">
+      </header>
+
+      <main class="grid">
+        <div class="phone-card card">
+          <img src="/img/ios26hello.png" alt="" class="phone-img">
+        </div>
+        <div class="log-card card">
+          <div class="log-head">
+            <span class="log-title">Live Log</span>
+            <span class="log-badge" id="log-badge">idle</span>
+          </div>
+          <div class="log-console" id="log-console"></div>
+        </div>
+      </main>
+
+      <section class="stats">
+        <div class="stat card">
+          <span class="stat-label">Activation</span>
+          <span class="stat-value" id="stat-activation">&mdash;</span>
+        </div>
+        <div class="stat card stat-wide">
+          <span class="stat-label">UDID</span>
+          <span class="stat-value stat-ellipsis" id="stat-udid">&mdash;</span>
+        </div>
+        <div class="stat card">
+          <span class="stat-label">iOS Version</span>
+          <span class="stat-value" id="stat-ios">&mdash;</span>
+        </div>
+      </section>
+
+      <section class="action">
+        <button id="unlock-btn" class="btn">Unlock</button>
+        <div id="progress-wrap" class="progress card hidden">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <span class="progress-pct" id="progress-pct">0%</span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================= INFO POPUP ================= -->
+  <div id="popup-overlay" class="overlay hidden">
+    <div class="popup card">
+      <h2 class="popup-title" id="popup-title">Title</h2>
+      <p class="popup-message" id="popup-message">Message</p>
+      <button id="popup-close" class="btn btn-sm">Close</button>
+    </div>
+  </div>
+
+  <!-- ================= LOADING POPUP ================= -->
+  <div id="loading-overlay" class="overlay hidden">
+    <div class="popup card">
+      <div class="spinner"></div>
+      <p class="popup-message" id="loading-message">Connecting&hellip;</p>
+    </div>
+  </div>
+
+  <!-- ================= REQUIREMENTS POPUP ================= -->
+  <div id="req-overlay" class="overlay hidden">
+    <div class="popup popup-lg card">
+      <h2 class="popup-title">Check Requirements</h2>
+      <div class="req-list" id="req-list"></div>
+      <p class="req-blocked-note hidden" id="req-blocked-note"></p>
+      <div class="req-actions">
+        <button id="req-proceed" class="btn" disabled>Proceed</button>
+        <button id="req-recheck" class="btn btn-ghost hidden">Re-check</button>
+        <button id="req-apply" class="btn hidden">Apply</button>
+        <button id="req-close" class="btn btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SUPPORTED DEVICES POPUP ================= -->
+  <button id="devices-fab" class="fab" title="Supported devices">&#9881;</button>
+
+  <div id="devices-overlay" class="overlay hidden">
+    <div class="popup popup-lg popup-xl card devices-popup">
+      <h2 class="popup-title">Supported Devices</h2>
+      <div class="devices-toolbar">
+        <input id="devices-search" class="devices-search" type="search"
+               placeholder="Search devices..." autocomplete="off" />
+        <div class="devices-filter" id="devices-filter">
+          <button class="df-btn active" data-f="all">All</button>
+          <button class="df-btn" data-f="iPhone">iPhone</button>
+          <button class="df-btn" data-f="iPad">iPad</button>
+        </div>
+      </div>
+      <div class="devices-grid" id="devices-list"></div>
+      <div class="req-actions">
+        <button id="devices-close" class="btn btn-ghost">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= LOCK / AUTH SCREEN ================= -->
+  <div id="lock-overlay" class="overlay">
+    <div class="popup card lock-card">
+      <div class="lock-icon">&#128274;</div>
+      <h2 class="popup-title">Protected Application</h2>
+      <p class="popup-message">Enter access password to unlock Apple Pie</p>
+      <form id="lock-form" onsubmit="return false;">
+        <input type="password" id="lock-password" class="lock-input" placeholder="Password..." autocomplete="current-password" required />
+        <p id="lock-error" class="lock-error hidden">Incorrect password</p>
+        <div class="req-actions" style="margin-top: 18px;">
+          <button type="submit" id="lock-submit-btn" class="btn">Unlock Access</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

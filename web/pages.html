@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apple Pie — Page Review</title>
+<link rel="stylesheet" href="/style.css">
+<style>
+  body { padding: 48px 24px; }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .page-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+  .page-head h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+  .page-head .sub { color: var(--text-2); font-size: 14px; margin-top: 6px; }
+  .back { color: var(--accent-1); text-decoration: none; font-size: 14px; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .pcard { display: block; text-decoration: none; padding: 22px; border-radius: 20px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow); transition: transform .16s ease, border-color .16s ease; }
+  .pcard:hover { transform: translateY(-3px); border-color: rgba(10, 132, 255, 0.55); }
+  .pcard .pname { font-size: 16px; font-weight: 700; color: var(--text-1); margin-bottom: 6px; }
+  .pcard .pdesc { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+  .pcard .plink { font-size: 12.5px; color: var(--accent-1); font-weight: 600; margin-top: 12px; }
+</style>
+</head>
+<body>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="orb orb-c"></div>
+
+  <div class="wrap">
+    <header class="page-head">
+      <div>
+        <h1>Apple Pie — Page Review</h1>
+        <div class="sub">Manually test every WebUI page. Each card opens that page with sample data (no iPhone needed).</div>
+      </div>
+      <a class="back" href="/">&#8592; Back to app</a>
+    </header>
+
+    <div class="grid">
+      <a class="pcard" href="/">
+        <div class="pname">Intro (gate)</div>
+        <div class="pdesc">Requirements popup auto-opens over the welcome screen on load — it pauses scanning and locks Close until every check passes.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?preview=home">
+        <div class="pname">Home / Dashboard</div>
+        <div class="pdesc">Device header, phone + live-log glass cards, stat chips and the Unlock button.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?preview=info">
+        <div class="pname">Info Popup</div>
+        <div class="pdesc">Centered message popup over a blurred dark overlay with a Close button.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?preview=loading">
+        <div class="pname">Loading Popup</div>
+        <div class="pdesc">Spinning blue loader with a progress message over the dimmed page.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?preview=progress">
+        <div class="pname">Progress (busy)</div>
+        <div class="pdesc">Unlock button morphs into an animated shimmering progress bar (45%).</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?preview=requirements">
+        <div class="pname">Check Requirements</div>
+        <div class="pdesc">Pre-flight popup with green &#10003; / red &#10007; checks and gated Proceed button.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+      <a class="pcard" href="/?devices=1">
+        <div class="pname">Supported Devices</div>
+        <div class="pdesc">Floating button popup: scrollable grid of every bundled device with iPhone/iPad filter + search, showing name and supported iOS versions.</div>
+        <div class="plink">Open &rarr;</div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

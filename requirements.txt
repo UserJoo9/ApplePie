@@ -1,0 +1,21 @@
+# Runtime dependencies for ApplePie — pinned to the audited working set (2026-08-30).
+# Install: pip install -r requirements.txt
+
+flask==3.1.3
+requests==2.34.2
+pymobiledevice3==10.8.1
+colorama==0.4.6
+art==6.5
+pystray==0.19.5
+pillow==12.2.0
+
+# Build-time (onefile via Nuitka, see build.txt)
+# nuitka==4.1.2
+
+# Test-only (live E2E screenshot asserts in test_webui_live.py; NOT shipped)
+# pillow==12.2.0
+
+# Note: requests was bumped 2.32.5 -> 2.34.2 to close CVE-2026-25645.
+# The bundled pymobiledevice3.exe shim has been REMOVED: all AFC / reboot
+# operations go through the pymobiledevice3 Python API directly, so there is
+# no packaged-dependency drift between source and frozen builds.

@@ -1,0 +1,16 @@
+python -m nuitka --onefile --assume-yes-for-downloads --windows-console-mode=disable --output-filename=applepie.exe --include-data-dir=img=img --include-data-dir=data=data --include-raw-dir=bin=bin --include-data-dir=web=web --nofollow-import-to=IPython --nofollow-import-to=pytest new_applepie.py
+
+# Nuitka onefile build notes (replaces PyInstaller, 2026-08-18):
+# - Needs a C compiler: MSVC (Visual Studio Build Tools) or MinGW-w64. Nuitka can
+#   auto-download MinGW64 when --assume-yes-for-downloads is used.
+# - Qt GUI is long gone (removed 2026-08-18 #16): the Flask WebUI (--webui) is the
+#   only interface, so PyQt5 is not imported and NOT bundled.
+# - data/  = SQL payload dumps (downloads.28.png, BLDatabaseManager.png), Maker/ MobileGestalt plists, badfile.plist
+# - bin/   = external tools (libimobiledevice/ideviceinfo.exe + idevicediagnostics.exe + DLLs, dependencies/unifiedlog_iterator.exe)
+# - web/   = Flask WebUI frontend (index.html, style.css, app.js, pages.html) served in --webui mode
+# - webui.py (Flask bridge) is lazy-imported in __main__; Nuitka statically follows the
+#   import and bundles Flask + deps (werkzeug/jinja2/click/itsdangerous/blinker) automatically.
+# - --onefile extracts data/bin/web to a temp dir at runtime (default {TEMP}\onefile_*);
+#   _resource()/_data() fall back to sibling data/bin folders next to applepie.exe.
+# - Deps are compiled into the binary; the C compiler must match the CPython ABI used
+#   to run this command (3.11.x). Output: applepie.exe in the current directory.
