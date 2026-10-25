@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/UserJoo9/ApplePie/main/icon.png" width="120" alt="Apple Pie" />
+<img src="icon.png" width="120" alt="Apple Pie" />
 
 # Apple Pie
 
